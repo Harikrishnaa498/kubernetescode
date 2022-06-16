@@ -9,7 +9,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("quay.io/harikrishnaa/gitops")
+       app = docker.build("harikrishnaa498/gitops")
     }
 
     stage('Test image') {
@@ -22,7 +22,7 @@ node {
 
     stage('Push image') {
         
-        docker.withRegistry('https://quay.io/', 'quay.io') {
+        docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
             app.push("${env.BUILD_NUMBER}")
         }
     }
